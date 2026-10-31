@@ -242,6 +242,26 @@ locally developed scripts.
 
 SLURM commands such as squeue and sview will tell you this.
 
+## How do I check my project's allocation?
+
+Use `mybalance` on a login node to see how much of the current quarter's
+allocation your DiRAC projects have used. `dirac-query-allocation` is the same
+command under a longer name. Like `quota`, it needs the cosma module.
+
+```
+mybalance                 # all of your projects, on all systems
+mybalance cosma8          # one system
+mybalance -p dpXXX cosma8 # one project
+mybalance -q cosma8       # every quarter, not just the current one
+mybalance -h              # all options
+```
+
+The system can be `cosma7`, `cosma8`, `highram`, `dine`, `cosma8dine2` or
+`cosma8mi300x`. Allocations are reported in CPU hours, except for `dine` and
+`cosma8dine2` (kWh) and `cosma8mi300x` (GPU hours).
+
+COSMA5 is not listed, because DiRAC does not award allocations on it.
+
 ## What is "backfill"? How do I exploit this?
 
 If a large (many node) job is waiting to run, it cannot start until enough
@@ -250,8 +270,21 @@ be used as "backfill" for short jobs. To use this, submit your job as usual,
 and if the system deems it appropriate, it will schedule you quickly. To make
 best use of this, specify a short time period for your job.
 
-The c[5,7,8]backfill command (e.g. c5backfill) will show available nodes for
-backfilling.
+The backfill commands show which nodes are free now, and for how long a job
+could run on them. Each one reports whole-node windows, and any partly used
+nodes on queues that allow single-core jobs:
+
+| Queue | Command |
+| ----- | ------- |
+| cosma5 | `c5backfill` |
+| cosma7 | `c7backfill` |
+| cosma7-rp | `c7rpbackfill` |
+| cosma8 | `c8backfill` |
+| dine2 | `dine2backfill` |
+| bluefield1 | `bluefield1backfill` |
+
+To use a window, set your job's time limit (`-t`) to less than the runtime
+shown.
 
 ## I want to analyse a simulation, but need a lot of memory: how do I do this?
 

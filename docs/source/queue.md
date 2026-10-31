@@ -128,8 +128,8 @@ The cosma5-test queue is for testing purposes only.
 
 Higher priority jobs will run first, though lower priority jobs with shorter runtimes may run as back-fill jobs, making use of available nodes before a larger job is due to start.  Setting a run-time limit for your job may get it completed more quickly. See the [FAQ](faq) descriptions for how to make use of back-filling.
 
-The quarterly allocation can can be found out in the [COSMA usage pages](https://virgodb.cosma.dur.ac.uk/usage/login.php), you'll need your
-COSMA username and password to see these.  However, COSMA5 is no longer listed here as no DiRAC allocations are awarded on it.
+The quarterly allocation can be found by running `mybalance` on a login node (see the [FAQ](faq.md#how-do-i-check-my-project-s-allocation)) or in the [COSMA usage pages](https://virgodb.cosma.dur.ac.uk/usage/login.php), for which you'll need your
+COSMA username and password.  However, COSMA5 is no longer listed here as no DiRAC allocations are awarded on it.
 
 Jobs within the same queue are scheduled using a fairshare arrangement so each user initially has the same priority. This is then weighted using a resources used formula.
 
