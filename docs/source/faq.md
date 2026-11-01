@@ -308,7 +308,9 @@ is still charged for the whole node.  The options depend on the system:
 - **COSMA7:** there is no serial queue.  Either run several tasks inside one
   job so that you use all 28 CPUs, or use the cosma7-shm queue described below.
 - **COSMA5:** the cosma5 queue already shares nodes.  Each CPU gets 4GB of memory
-  by default, up to a maximum of 6GB per CPU.
+  by default.  You can request more with `--mem`, but Slurm may add CPUs to your
+  job to match, and these count towards your usage: for example, a 1 CPU job that
+  requests 24GB gets 5 CPUs.
 
 For example, to run on 4 CPUs of a COSMA8 node with 32GB of memory:
 
