@@ -1,4 +1,4 @@
-# Mixed interactive / batch hardware lab nodes
+# Hybrid interactive / batch hardware lab nodes
 
 Some nodes that are part of the [Hardware Lab](hardwarelab.md) switch between interactive access and a slurm queue.
 
